@@ -8,9 +8,9 @@ const {getStatus} = require("./status");
  * Converts a Dutch tax payment reference into a structured description with relevant data.
  * @param {string} paymentReference
  * @param {number} paymentYear
- * @return {Promise<string | undefined>}
+ * @return {string | undefined}
  */
-module.exports.getDescription = async function (paymentReference, paymentYear = new Date(Date.now()).getFullYear()) {
+module.exports.getDescription = function (paymentReference, paymentYear = new Date(Date.now()).getFullYear()) {
     const bsn = getBSN(paymentReference);
     /** @type {{letter: string, description: string, short: string, type: string, sortCode: string}} */
     const type = types.find(t => t.sortCode === paymentReference.substring(9, 11) || t.sortCode === paymentReference.substring(9, 10));

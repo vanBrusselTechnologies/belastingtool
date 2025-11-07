@@ -11,5 +11,9 @@
   ],
   "scripts": {
     "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vanBrusselTechnologies/belastingtool"
   }
 }
