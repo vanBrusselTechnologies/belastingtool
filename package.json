@@ -1,6 +1,6 @@
 {
   "name": "belastingtool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Een Node.js-module die belastingdienst betalingskenmerken parseert en omzet naar duidelijke, gestructureerde gegevens voor verdere verwerking of administratie.",
   "license": "ISC",
   "author": "vanBrusselTechnologies",
