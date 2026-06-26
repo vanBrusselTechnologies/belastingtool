@@ -1,6 +1,6 @@
 const {getBSN} = require("./bsn");
 const {getConversion} = require("./conversion");
-const {types} = require("./data");
+const {types, controlVPB} = require("./data");
 const {getFullYear, getReturnPeriod} = require("./period");
 const {getStatus} = require("./status");
 
@@ -13,7 +13,8 @@ const {getStatus} = require("./status");
 module.exports.getDescription = function (paymentReference, paymentYear = new Date(Date.now()).getFullYear()) {
     const bsn = getBSN(paymentReference);
     /** @type {{letter: string, description: string, short: string, type: string, sortCode: string}} */
-    const type = types.find(t => t.sortCode === paymentReference.substring(9, 11) || t.sortCode === paymentReference.substring(9, 10));
+    let type = types.find(t => t.sortCode === paymentReference.substring(9, 11) || t.sortCode === paymentReference.substring(9, 10));
+    if (type == null) type = controlVPB.find(c => c.control === paymentReference.substring(9, 11)) ? types.find(t => t.short === "VPB") : null;
     if (!type) return undefined;
     const letter = type.letter;
     const fullYear = getFullYear(paymentReference, letter, paymentYear);
